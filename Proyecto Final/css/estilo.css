@@ -1,0 +1,845 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+section{ /*Establecemos el ancho de todas la secciones, que será el 100% del ancho 
+del dispositivo, y quitamos el overflow horizontal para evitar que haya scroll en esa
+dirección*/
+	width: 100%;
+	margin-right: 0px;
+	overflow-x: hidden;
+}
+
+section:last-child{ /*Añadimos color a la última sección*/
+	background-color:#108839;
+}
+
+/*DETALLES DEL CURSOR, que está incluido en la primera sección*/
+
+.p_cursor{
+	--size: 20px; /*establezco una variable: size(tamaño estandar = 20px)*/
+	position: fixed; 
+	width: var(--size); /*ancho = 20px*/
+	height: var(--size); /*alto = 20px*/
+	top: calc(var(--size) / -2); 
+	left: calc(var(--size) / -2); 
+	/*Se desplazará arriba y abajo con el resultado de la operación = variable size entre
+	menos dos, es decir la mitad de su tamaño*/
+	transform: translate(var(--cursor-x, -100px), var(--cursor-y, -100px)) translateZ(0); 
+	pointer-events: none;
+	transition: none;
+	z-index: 4; /*Lo ponemos por encima de cualquier capa*/ 
+}
+.i_cursor{ /*Posicionamos al cursor interno en display block, que para que no se mueva
+	con respecto a su padre: .p_cursor. Ancho y alto total del padre, 50% de border-radius poara
+	que sea un ciruclo, añadimos clor de fondo y estilos al borde, una transición para que se mueva
+	de manera sutil y opacidad de 0.7 para que se pueda ver lo aue hay debajo cuando hacemos hover o click.*/
+	display: block;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	background-color: #108839;
+	border: 1px solid black;
+	transition: all 0.15s ease-in-out;
+	opacity: 0.7;
+}
+
+
+/*Sección1*/
+
+section:first-child{ /*Propiedades que afectarán a la primera sección, ponemos como
+altura mínima 100vh, añadimos una imagen como fondo, reduciendo su tamaño original un 20%,
+la poscicionamos, y al ser un png añadimos un color de fondo.*/
+	min-height: 100vh;
+	background-image: url(../img/fondohome.png);
+	background-size: 80%;
+	background-position: 2%, 10% ;
+	background-color: floralwhite;
+	background-repeat: repeat;
+}
+
+nav{ /*Tomará el papel del menú desde donde acceder a las diferentes páginas, 
+está en position:FIXED para que se quede anclado a la parte de arriba cuando hacemos scroll
+por las secciónes, /*index para que se posicione encima de cualquier elemento*/
+	z-index: 3; /*index para que se posicione encima de cualquier elemento*/
+	width: 100%;
+    height: 10vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: white;
+    border-radius: 0px 0px 30px 30px;
+}
+
+nav #underline{ /*id que hace referencia a la barra que indica que parte del menú
+	hemos seleccionado, añadimos altura puesto que es un línea, la altura modificará 
+	el ancho del elemento, añadimos también separación con respecto al top y una transición
+	para que fluya mejor*/ 
+	position: absolute;
+	left: 0;
+    height: 2px;
+    width: 0;
+    background-color: #000;
+    top: 36px;
+    transition: 0.5s;
+    border-radius: 4px;
+}
+
+div.menu{ /*Creamos un div que agrupase la lista y el claim, lo posicionamos en relative
+y añadimos "margen" / separamos de arriba y de la izquierda con top y left*/
+	position: relative;
+	left: 2%;
+	top: 5%;
+}
+
+@media screen and (max-width:500px){ /*Añadimos un media query para que de 500px 
+	hasta la mínima pantalla posible (tamaño de pantalla), se produzcan los siguientes cambios*/
+	
+	/*el tamaño de la letra del menu nav y el
+	párrafo con la clase .principal disminuyan a estas medidas*/
+	nav{ /*Modificar el tamaño del contenedor del nav de 10vh a 8vh*/
+		height: 8vh;
+	}
+	.menu{ /*Cambiamos el tamaño de la fuente*/
+		font-size: 0.6em;	
+	}
+
+	.home a{ /*Reducimos el padding de lo enlaces dentro de la lista*/
+		padding: 2px;
+	}
+ 
+	nav #underline{ /*Modificamos la altrua de la linea y la posicion de la misma*/
+		position: absolute;
+		left: 0;
+	    height: 1px;
+	    top: 22px;   
+	}
+	section:first-child{ /*Cambiar la imagen y aumentar el tamaño*/
+	
+		background-image: url(../img/fondohome2.png);
+		background-size: 120%;
+		background-position: 2%, 10% ;
+		background-color: floralwhite;
+		background-repeat: repeat;
+
+	}
+}
+
+@media screen and (min-width:501px) and (max-width:750px){ /*Media query para reducir el tamaño de la imagen desde 
+la pantalla de tamaño 501px hasta la pantalla de 750px*/
+	section:first-child{ 
+		background-image: url(../img/fondohome2.png);
+		background-size: 100%;
+		background-position: 2%, 10% ;
+		background-color: floralwhite;
+		background-repeat: repeat;
+	}
+}
+
+@media screen and (min-width:751px) and (max-width:1200px){ /*Media query para aumentar el tamaño de la imagen desde 
+751px hasta la pantalla de 1200px*/
+	section:first-child{ 
+		background-image: url(../img/fondohome.png);
+		background-size: 150%;
+		background-position: 2%, 10% ;
+		background-color: floralwhite;
+		background-repeat: repeat;
+	}
+}
+
+ul{ /*display: inline-flex porque así está planteado el diseño, quitamos los 
+puntos de la lista*/
+	list-style: none;
+	display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.home nav a{ /*Modificamos la fuente de los links dentro del nav, y añadimos márgen
+	interior de 4px*/
+	font-family: 'Love Ya Like A Sister', cursive;
+	text-transform: uppercase;
+	font-size: 1.8em;
+	color: black;
+	padding: 4px;
+}
+
+.home a:nth-child(2){ /*Eliminamos el padding left del primer link*/
+	padding-left: 0px;
+}
+
+/*Empezamos por nth child:2, porque el primer descendiente es la barra #underline
+y modificamos los colores de cada link al hacer hover*/
+.home a:hover:nth-child(2){
+	color: #88D6E8;
+}
+.home a:hover:nth-child(3){
+	color: #9C7EBA;
+}
+.home a:hover:nth-child(4){
+	color:#A0C46A;
+}
+.home a:hover:nth-child(5){
+	color:#DED163;
+}
+
+
+p.claim{ /* Hace referencia a la frase debajo del nav, simplemente modificamos la 
+apariencia*/
+	font-family: 'Fraunces', serif;
+	font-weight: 100;
+	text-transform: uppercase;
+	color: black;
+	font-size: 1em;
+}
+
+.contenedorimg img{ /*Posicionamos a la imagen dentro del div en absoulute y partir de ahi le añadimos 
+las medidas en % para hacerlas responsive, y usamos translate(x, y)para recolocar el un elemento en 
+el eje horizontal y vertical */
+	position: absolute;
+	transform: translate(-50%, -50%);
+	width:30%;
+	top: 50%;
+	left: 50%;
+}
+
+
+
+
+/*--------SECCION2---------*/ 
+
+section.shop{ /*Establecemos un color de fondo a la sección, hereda propiedades de la regla
+establecida anteriormente, que afectaba a todas las secciones*/
+	background-color: white;
+}
+
+.global-shop{ /*Agrupa el título de sección y las imágenes. Eliminamos el overflow, 
+es decir todo el contenido que desborde se va a ocultar*/
+	width: 100%;
+	overflow: hidden;
+	display: relative;
+}
+
+.container-shop{ /*Container que contiene los h1. Display-flex para posicionar el div que contiene 
+los h1 en el centro*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+}
+
+h1{ /*Cambio de fuente y peso, además los ponemos en línea*/
+	font-family: 'Fraunces', serif;
+	font-weight: 400;
+	display: inline-block;
+	font-size: 1.5em;
+}
+
+.cuadro { /*condiciones generales que afectarán a todos los cuadros que contienen las 
+letras (H1). Colocamos los cuadros con ancho y alto 10px en el centro con display flex,
+y aplicamos padding para separar la letra de los bordes y margin para controlar el espacio entre 
+los cuadros*/ 	
+	background-color: ghostwhite;
+	width: 10px;
+	height: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: solid;
+	border-radius: 10%;
+	padding: 20px;
+	margin: 10px;
+	border-width: 2px;
+	z-index: 1;
+}
+
+/*Afectan a las letras en sí, les cambiamos el color*/
+
+.cuadro:nth-child(1) h1{ 
+	color: #B64C6F;
+}
+.cuadro:nth-child(2) h1{
+	color: #88D6E8;
+}
+.cuadro:nth-child(3) h1{
+	color: #ba96de;
+}
+.cuadro:nth-child(4) h1{
+	color: #e7d113;
+}
+
+/*Afectan a los cuadros que envuelven las letras, añadimos un color de borde y una sombra 
+para generar volumen y conseguir el efecto deseado*/
+
+.cuadro:nth-child(1){
+	border-color: #B64C6F;
+	box-shadow: -3px -3px 0px 3px #B64C6F;
+}
+.cuadro:nth-child(2){
+	border-color: #afe1ec;
+	box-shadow: -5px 5px 0px 3px #88D6E8;
+}
+.cuadro:nth-child(3){
+	border-color: #d7c2ed;
+	box-shadow: -5px -5px 0px 3px #ba96de;
+}
+.cuadro:nth-child(4){
+	border-color: #f9e63a;
+	box-shadow: 5px -5px 0px 3px #e7d113;
+}
+
+
+/*"GRID imágenes*/
+
+
+.justflex{ /*Div que he creado para posicionar el contenedor en el centro, con ancho total, 
+lo alineamos en el centro en ambos ejes, y le perimitimos hacer flex-wrap: wrap para que se
+acople en dispositivos de pantalla más pequeña*/
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	align-content: center;
+}
+
+.falso-grid{ /*Añadimos un segundo contenedor que ocupe el 60% del 100% inicial, para
+hacer que las imágenes colocadas ocupen dos filas*/
+	display: flex;
+	width: 60%;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	align-content: center;
+}
+
+
+@media screen and (max-width:1200px){ /*incluimos un mediaquery para que desde la mínima pantalla
+hasta la de ancho 1200px, el display flex tenga de ancho el 80% del 100% del contenedor en el que está 
+metido (.justflex), en lugar del original 60% que va a tener cuando la pantalla es más ancha*/
+	.falso-grid{
+		display: flex;
+		width: 80%;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
+		align-content: center;
+	}
+}
+
+
+.justflex .falso-grid .contenedor{  /*Posicionamos el contenedor de las imágenes en 
+relative con el tamaño que queremos que tengan las imágenes para que se ajusten a 
+a perfección, añadimos overflow hidden para que no se desborde la imagen y ludgo añadimos
+margen para que si se modifican las dimensiones de la pantalla, los contenedores
+guarden los 10px de distancia entre ellos*/
+	position:relative;
+	width:250px;
+	height:250px;
+	overflow:hidden;
+    margin: 10px;
+    border: solid;
+	border-radius: 10%;
+	border-color: #108839;
+}
+
+img.contenedor:all{ /*Añade una transición a todas las imágenes que tienen la clase
+contendedor, la trasicion en concreto durará 0.9segundos*/
+	transition: 0.9s ease
+}
+.contenedor img:hover{  /*Añadimos el efecto en sí, cuando hagamos hover, las propias
+	imágenes no el contendedor, se ampliarán*/
+	transform:scale(2);
+}
+
+.shop .justflex .contenedor img{ /*Modifica el ancho y alto de las propias imagenes*/
+	z-index: 2;
+	width:250px;
+	height:250px;
+
+}
+
+/*Añadimos un before y un after con las medidas del contenedor de
+la imagen sin contenido, para que actue como fondo y poder rotarlo después*/
+.contenedor:before, 
+.contendor:after{
+	content: '';
+	width: 250px;
+	height: 250px;
+	position: absolute;
+	top:0;
+	left: 0;
+}
+.contenedor:before{ /*Rotamos el contenedor "invisible" creado antes*/
+	background-color: green;
+	transform: rotate(45deg)translateY(-193px);
+}
+
+.contenedor h2{ /*Condiciones que afectarán a los h2, posicionamos el texto en absolute
+	con top y bottom con respecto al contenedor, y lo giramos para que se adapte al fondo*/
+	position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: rotate(45deg)translateY(-31px);
+    font-family: 'Syne', sans-serif;
+    font-size: 1em;
+    color: white;
+}
+
+.shopall-link{ /*Link de Shop All, display flex para colocarlo en el centro y añadimos
+	un margen de 10px para separar el link del contenedor superior y 20px para separarla del 
+	borde de la sección siguiente*/
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 10px;
+	margin-bottom:20px;
+}
+
+.shopall-link a{ /*Modificamos la apariencia del boton de link, y añadimos padding para añadir espacio
+entre el texto y el borde*/
+	font-size: 1em;
+	font-family: 'Syne', sans-serif;
+	font-weight: 400;
+	color: black;
+	text-transform: uppercase;
+	padding: 10px;
+    border: solid 1px black;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.shopall-link a:hover{ /*Añadimos un hover al link de manera que cuando el ratón esté 
+por encima, se cambie el fondo a verde y el color de letra a blanco*/
+	background-color: green;
+	color: white;
+	font-family: 'Syne', sans-serif;
+	font-weight: 400;
+}
+
+/*--------SECCION 3-PRESS---------*/ 
+
+section.press{ /* Posición relativa, ancho total, y cambiamos el color de fondo, ocultamos
+cualquier cosa que desborde tanto en el eje horizontal como vertical*/
+	box-sizing: border-box;
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+	background-color: #F1F1F1;
+
+}
+.titulo-seccion-press{ /*Bloque horizontal al principio de la sección, le damos "padding top" 
+en lugar de "top" para que se separe del borde de la sección manteniendo su espacio correspondiente*/
+	padding:20px;
+	color: black;
+	font-size: 2em;
+	font-family: 'Syne', sans-serif;
+	font-weight: 600;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	text-align: center;
+	text-transform: uppercase;
+
+}
+
+.bloques{ /*Div que agrupa los cuatro .bloquesbase, los ponemos en flex para que 
+sea responsive, lo posicionamos en fila, y les permitimos hacer wrap cuando lo necesiten*/
+	display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.bloques .bloquebase{  /*Añadimos bordes a los bloques, y border-collapse para que no haya 
+doble borde en las uniones*/
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+@media screen and (min-width:1420px){ 
+/*añadimos un media screen pues el diseño de .bloques lo hemos diseñado como 
+MobileFirst entonces este medidaquery afectará a la versión desktop, desde 1400 hasta todas las pantallas 
+de tamaño superior. Aqui le decimos que no se haga flex wrap*/
+	.bloques{
+		display: flex;
+   		width: 100%;
+    	flex-direction: row;
+    	justify-content: center;
+    	align-content: center;
+    	flex-wrap: nowrap;	
+	}
+}
+
+
+.textoarticulos{ /*Afecta a la segunda parte del bloque, la parte del texto. Añadimos padding
+para que tenga espaciado con respecto al bloque de arriba (imagen)*/
+    padding: 20px;
+    border-top: 2px solid;
+    font-family: 'Syne', sans-serif;
+
+}
+
+.textoarticulos h1{ /*Al H1 dentro del div.textoarticulos, ponemos la fuente en bold, 
+aumentamos su peso y tamaño*/
+  	font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 1.5em;
+}
+.textoarticulos p{ /*Añadimos padding superior que generará un espacio entre el párrafo 
+	y el h1*/
+	padding-top: 10px; 
+}
+
+.border{ /*hace referencia al contenedor de la imagen, centramos las imágenes*/
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.press .border img{ /*Alteramos las dimensiones de las imágenes, añadimos la propiedad cover-fit para que la img
+se redimensiona para mantener su relación de aspecto minetras sigue ocupando total el cuadro, es decir
+que se ajuste la imagen al contenedor.*/
+	width: auto;
+	height: 250px;
+	object-fit: cover;
+}
+
+.padding-enlace{ /*Es el div que contiene el link, y lo utilizo simplemente para añadir padding-top y
+que se separe del elemento superior.*/
+	padding-top: 25px;
+}
+
+.press a{ /*Afecta al link de "ver más"*/
+	font-size: 1em;
+	font-family: 'Syne', sans-serif;
+	font-weight: 400;
+	text-transform: uppercase;
+	color: black;
+
+}
+.press a:hover{ /*Hover del link anterior, cambio de color de black a verde al hacer hover*/
+	color: green;
+}
+
+
+/*------SECCIÓN 4-COMENTARIOS-----*/
+
+section.comentarios{ /*Posicionamos la sección en relative, añadimos una altura minima que debe respetarse,
+ocultamos el posible overflow en ambos ejes, y modificamos la fuente.*/
+	position:relative;
+	min-height: 90vh;
+	overflow: hidden;
+	font-family: 'Syne', sans-serif;
+	font-weight: 400;
+	font-size: 1em;
+
+}
+section .titulo-seccion{ /*Ajustes sobre el título de la sección, lo posicionamos en 
+display: flex pero en línea, lo centramos en ambos ejes, añadimos padding top para que
+haya separación entre el top de la sección, y luego modificamos la apariencia del texto, 
+aumentamos el peso, el tamaño y lo ponemos en mayúsculas.*/
+	display: inline-flex;
+	width: 100%;
+	align-items: center;
+	justify-content: center;
+	padding-top: 50px;
+	text-transform: uppercase;
+	color: black;
+	font-size: 2em;
+	font-family: 'Syne', sans-serif;
+	font-weight: 600;
+}
+
+.wrapper{ /*El wrapper hace esa función agrupa/envuelve los tres contenedores de los perfiles,
+ancho total de la pantalla, display flex, y lo centramos el eje principal y le permitimos hacer wrap
+y luego modificamos la alineación del texto = justificada*/
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	text-align: justify;
+}
+
+.wrapper .contenedor-perfiles{ /*Posicionamos en realtivo, le damos un ancho, un color de fondo
+	con opacidad baja, y borde el cual es redondeado, añadimos un margen exterior de 30px top, 10px left y 
+	right y 2px abajo*/
+	position: relative;
+	width: 250px;
+	background-color: rgba(255, 255, 255, 0.4);
+	border: solid 1px black;
+	border-radius: 10px;
+	margin: 30px 10px 2px;
+	padding: 30px 20px;
+}
+
+.wrapper .contenedor-perfiles .perfil .imgBox{ /*Posición relativam ancho y alto de 100px
+,margen automático respecto al ancho de lo que lo contiene por lo que se centra. Añadimos
+radio al borde del 50% para que se haga ciruclar, y ocultamos lo que se desborde*/ 
+	position: relative;
+	height: 100px;
+	width: 100px;
+	margin: auto;
+	border: 2px solid black;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.wrapper .contenedor-perfiles .perfil .imgBox img{ /*Afecta a la imágen en si. Posicion absoluta
+	respecto a su antecesor (el contenedor .imgBox), le decimos que ocupe el 100% de ancho y alto
+	es decir el 100% de su antecesor = a 100px, y añadimos una transición para cuando
+	añadamos el siguiente hover*/
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top:0;
+	left: 0;
+	border-radius: 50%;
+	transition: 0.3s ease;
+	object-fit: cover;
+}
+.wrapper .contenedor-perfiles .perfil .imgBox:hover img{ /*Añadimos el efecto que queremos que se haga 
+cuando hagamos hover: que se disminuya el tamaño de 1 a 0.8 y que se sobresature la imagen*/
+	filter: saturate(140%);
+	transform: scale(0.8);
+}
+.wrapper .contenedor-perfiles .perfil h2{ /*Afecta al h2, añadimos padding arriba y abajo y nada 
+	a los lados, lo ponemos en mayúsculas, color negro, alineado en el centro y modificamos la 
+	separación entre las letras (tracking)*/
+	padding: 5px 0;
+	text-transform: capitalize;
+	color: black;
+	text-align: center;
+	letter-spacing: 1px;
+}
+
+.wrapper .contenedor-perfiles p{ /*Afecta a los párrafos; añadimos padding 8px a los lados y 
+15px abajo y bajamos la opacidad de las letras*/
+	color: black;
+	padding: 0 8px 15px;
+	opacity: 0.8;
+}
+
+.wrapper .contenedor-perfiles .left{ /*Afecta al icono de las comillas, lo ponemos en display block,
+	modificamos el tamaño, el color y la alineación a la izquierda*/
+	font-size: 2em;
+	display: block;
+	text-align: left;
+	color: green;
+}
+
+.wrapper .contenedor-perfiles .social{ /*Afecta al contenedor que agrupa los tres iconos 
+	de redes sociales, ocupará el total del contenedor y lo centramos*/
+	width: 100%;
+    text-align: center;
+
+}
+.wrapper .contenedor-perfiles .social i{ /*Los propios iconos, modificamos las propiedades*/
+	font-size: 1em;
+	color: black;
+	padding: 8px;
+	background: rgba(255,255,255, 0.08);
+	border: 1px solid black;
+	border-radius: 4px;
+	
+}
+
+.wrapper .contenedor-perfiles .social i:hover{ /*Propiedades para cuando se haga hover*/
+	background-color: #B64C6F;
+	box-shadow: 3px 4px 6px 1px rgb(24 102 120 / 30%);
+	color: white;
+
+}
+
+p.end-comentarios { /*Afecta al párrafo con la clase end-comentarios, lo posicionamos
+en display flex en línea, ancho total e la pantalla y lo centramos en ambos ejes, añadimos 
+padding top y bottom*/
+	width: 100%;
+	color: black;
+	font-size: 1.5em;
+	font-family: 'Syne', sans-serif;
+	font-weight: 600;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	text-transform: uppercase;
+	padding-top: 30px;
+	padding-bottom: 20px;
+}
+
+
+.arrow i{ /*Icono de la flecha, total de la pantalla, alineamos al centro, padding 15px para separarlo de 
+los demás elementos y cambiamos el tamaño del icono con el font-size*/
+	position: relative;
+	width: 100%;
+	text-align: center;
+	padding:15px;
+	font-size: 2em;
+}
+
+.suscribete{ /*Posicioón relativa, ancho total, añadimos un fondo con transparencia,
+añadimos padding 30px a todos lps lados, modifciamos el tamaño y peso de la tipografía,
+ponemos el texto en mayusculas y lo alineamos al centro*/
+	position: relative;
+	width: 100%;
+	background-color: rgba(255, 255, 255, 0.4);
+	border: solid 1px black;
+	margin-top: 18px;
+	padding: 30px;
+	font-family: 'Syne', sans-serif;
+	font-size:1.2em;
+	font-weight: 700;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.suscribete a:hover{ /*Reglas que se van a ejecutar cuando hagamos hover: cambio de color de negro 
+	a verde*/
+	color: green;
+
+}
+
+@media screen and (max-width:800px){ /*añadimos un media screen para que desde la mínima medida de pantalla
+hasta 800px se apliquen las siguientes reglas.*/
+	.suscribete{ 
+		margin-top: 15px;
+	    padding: 20px 5px;
+	    font-size: 1em;
+	    font-weight: 700;
+	}
+}
+
+/*Sección 5-Footer*/
+
+section.footer{ /*Definimos la altura y el ancho, en este caso queríamos que el footer 
+ocupase menos que las demás secciones de ahi darle un alto mínimo menor que el resto*/ 
+	width: 100%;
+	min-height: 40vh; 
+	font-family: 'Syne', sans-serif;
+	color: white;
+	font-size: 1em;
+	font-weight: 400;
+}
+
+.wrap{ /*Establecemos un margen top para separar el containter del top de las sección, el container ocupará el 100% de la sección, 
+está en display flex, para que pueda ser responsive, le dejamos hacer wrap, establecemos la 
+dirección de los bloques .logo .datos y .subcripcion que será row uno a lado de otro
+y con espaciado igual entre ambos, el eje contrario lo situamos arriba de la sección.*/
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+
+}
+.logo{  /*todas las "secciones" dentro de wrap las situaremos con relative para que
+	ocupen todas el mismo espacio con respecto al establecido anteriormente*/
+	position: relative;
+	width: auto;
+	display: flex;
+	justify-content: center;
+    align-items: center;
+}
+	
+.logo img{ /*Alteramos las dimensiones de la imagen original*/
+	width: 400px;
+}	
+.datos{ /*Flex direction column para que se apilen en lugar de colocarse uno al lado del
+otro*/
+	position: relative;
+	display: flex;
+    flex-direction: column;
+	padding-left: 10px;
+    padding-right: 20px;
+    margin: 20px;
+    font-size: 1em;
+    
+}
+.datos a{ /*Añadimos margen individual a cada uno de los link*/
+	margin: 4px;
+}
+
+.datos a:hover{ /*Cuando se pase el mouse por encima de los acambiará de color
+	a negro y con un subrayado por abajo*/
+	color:black;
+	text-decoration: underline ;
+}
+
+.subscripcion{ /*Contenedor del form, lo ponemos en relative y añadimos padding a la 
+derecha e izquierda*/
+	font-family: 'Syne', sans-serif;
+	font-weight: 400;
+	font-size: 1em;
+	position: relative;
+    margin: 20px;
+}
+
+form{ /*Añadimos al form un ancho y padding*/
+	width: auto;
+	padding-left: 10px;
+    padding-right: 30px;
+}
+
+input[type="text"]{ /*Le quitamos el borde, pero añadimos un borde especial a la parte 
+	de abajo, añadimos margen exterior y padding al interior, cambiamos el fondo a transparente*/
+	border: none;
+    border-bottom: 1px solid white;
+    padding: 5px;
+    margin: 5px;
+    background-color: transparent;
+    color:#9af4ff;
+   
+}
+
+input{ /*Cambiamos a la fuente del diseño*/
+	font-family: 'Syne', sans-serif;
+	display: block;
+	font-size: 1em;
+	font-weight: 400;
+}
+
+input:focus-visible{ /*Elimina la acción de que la caja se "seleccione" cuando haces click en ella*/
+	outline: none;
+}
+::-webkit-input-placeholder{ /*Modifica el color por defecto del placeholder inactivo a
+	blanco*/
+	color:white;
+}
+::placeholder{ /*Modifica el color por defecto del placeholder inactivo a blanco*/
+	color:white;
+}
+input[type="submit"]{ /*Modificamos el boton de subscribirse, poniendo fondo transparente 
+letra blanca, en mayúsculas, añadimos padding top-bottom 7px y left right de 60px, borde 
+redondeado negro de 1px, añadimos margen left-right auto para que se centre con respecto a 
+los inputs y margin top para que haya espacio entre el boton y el input superior*/
+	background-color: transparent;
+	color: white;
+    text-transform: uppercase;
+    padding: 7px 60px;
+    border: solid 1px white;
+    border-radius: 5px;
+    margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+}
+
+input[type="submit"]:hover{ /*Se oplicará esta regla cuando se haga hover sobre el botón de enviar/submit*/
+	background-color: #B64C6F;
+	color: white;
+}
+
+
+
+
+
+
+
+

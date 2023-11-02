@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/estilo.css">
+	<script defer src="js/funciones.js"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,100;9..144,300;9..144,400&family=Love+Ya+Like+A+Sister&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/196c3bb2d1.js" crossorigin="anonymous"></script><!--Linkeamos el html con FontAwesome-->
+</head>
+
+<body><!--División del body en 5 secciones, cada una se le aplica una clase según la funcion que van a tomar = HOME, SHOP, PRESS, COMENTARIOS Y FOOTER-->
+	<section class="home">
+		<div class="p_cursor"><!--Añadimos un div con la clase p_cursor para poder personalizar el cursor del navegador-->
+			<div class="i_cursor"></div><!--Añadimos un div con la clase i_cursor que va a actuar como hijo del p_cursor-->
+		</div>
+		<nav><!--El nav va ha ser la pestaña de navegación, que incluye una lista y una frase, todo agrupado en un div .menu-->
+			<div class="menu">
+				<ul><!--Lista no numerada-->
+					<div id="underline"></div><!--Será una línea animada en Js que se transladará horizontalmente por los "a" del nav segun donde cliquemos-->
+					<a>about,</a>
+					<a>shop,</a>
+					<a>new&nbsp;in,</a><!--&nbsp; para evitar que se rompa la palabra-->
+					<a>personaliza</a>
+				</ul>	
+				<p class="claim">Welcome back to your childhood!</p>
+			</div>
+		</nav>
+		<div class="contenedorimg">	<!--Un div con la clase .contenedorimg que integra el gif para poder situar y centrar ambos en el css-->
+			<img src="img/camisetas.gif"><!--añadimos una imagen local-->
+		</div>
+	</section>
+	
+	<section class="shop"><!--Sección 2-->
+		<div class="global-shop">
+			<div class="container-shop"><!--División de la sección en dos partes: Esta que es el título y la siguiente justflex que es el div con la cuadrícula de imágenes-->
+				<div class="cuadro"><!--Metemos a cada h1 en un contenedor para luego aplicarles estilos a los propios contenedores-->
+					<h1>S</h1>
+				</div>
+				<div class="cuadro">
+					<h1>H</h1>
+				</div>
+				<div class="cuadro">
+					<h1>O</h1>
+				</div>
+				<div class="cuadro">
+					<h1>P</h1>
+				</div>
+			</div>
+
+			<div class="justflex"><!--Contiene la cuadrícula de imágenes-->
+				<div class="falso-grid">
+					<div class="contenedor">
+						<h2>Rayuela</h2>
+						<img src="img/producto1.jpg">
+					</div>	
+					<div class="contenedor">
+						<h2>Architect</h2>
+						<img src="img/producto2.jpg">
+					</div>	
+					<div class="contenedor">
+						<h2>Doodles</h2>
+						<img src="img/producto3.jpg">
+					</div>
+					<div class="contenedor">
+						<h2>ThridGrade</h2>
+						<img src="img/producto4.jpg">
+					</div>
+					<div class="contenedor">
+						<h2>Essence</h2>
+						<img src="img/producto5.jpg">
+					</div>
+					<div class="contenedor">
+						<h2>Waves</h2>
+						<img src="img/producto6.jpg">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="shopall-link"><a href="www.google.es">shop all</a></div><!--Boton de ver más productos-->
+		</div>
+	</section>
+
+	<section class="press"><!--Sección 3-->
+		<div class="titulo-seccion-press">SEEN IN</div><!--Añadimos un tiítulo a la sección-->
+		<div class="bloques"> <!--Para aplicar la division por bloques-->
+			<div class="bloquebase"><!--Bloque en si, queremos que tenga el diseño 4 bloques por eso este bloque de código se repetirá 4 veces-->
+				<div class="border"><!--Division del bloque en dos para poder aplicar diferentes propiedades a cada uno, este div en concreto es el que afectará a la imágen-->
+					<img src="img/press1.png">
+				</div>
+				<div class="textoarticulos"><!--Div que afecta al contenido escrito, a la informacion, lo divido porque necesita propiedades diferentes-->
+					<h1>Detrás de Fauves Brand: María Fabres</h1>
+					<p>Localizada en Madrid capital, María Fabres comienza a hacerse un sitio en el sector de la moda, con sus productos consigue atraer a la generación de crrativos.  Fauves surge a partir de una inquietud por enseñar sus habilidades, explotando el lado más infantil que todos tenemos. </p>
+					<div class="padding-enlace"><a href="https://www.instagram.com/fauvesbrand/?hl=es">Ver más</a></div><!--Enlace con el texto ver mas-->
+				</div>
+			</div>
+
+			<div class="bloquebase">
+				<div class="border">
+					<img src="img/press2.png">
+				</div>
+				<div class="textoarticulos">
+					<h1>Fauves: donde los Colores Vibrantes se Encuentran con la Magia Infantil</h1>
+					<p>En Fauves Brand, hemos llevado la audacia y la frescura de la infancia al mundo de la moda para adultos. Nuestra ropa bordada te sumerge en una paleta de colores vivos que evocan la alegría y la energía de los momentos más divertidos de la niñez. Cada prenda es un testimonio de la magia que encontramos en los detalles, donde los bordados meticulosos y los diseños juguetones se fusionan en una explosión de estilo.</p>
+					<div class="padding-enlace"><a href="https://www.instagram.com/fauvesbrand/?hl=es">Ver más</a></div>
+				</div>
+			</div>
+
+			<div class="bloquebase">
+				<div class="border">
+					<img src="img/press3.png">
+				</div>
+				<div class="textoarticulos">
+					<h1>Fauves Brand, la marca viguesa que reivindica la ternura de la infancia</h1>
+					<p>Fauves Brand, con sede en Vigo, es una marca que abraza la esencia de la infancia con cariño y estilo. Cada diseño que creamos es un recordatorio de la ternura y la inocencia que todos llevamos en el corazón. Inspirados por los recuerdos más dulces, transmitiendo una sensación de calidez y alegría en cada prenda y accesorio. Desde la costa gallega, Fauves Brand se enorgullece de traer la ternura de la infancia a la moda para adultos de una manera única y encantadora</p>
+					<div class="padding-enlace"><a href="https://www.instagram.com/fauvesbrand/?hl=es">Ver más</a></div>
+				</div>
+			</div>
+
+
+				<div class="bloquebase">
+					<div class="border">
+						<img src="img/press4.png">
+					</div>
+					<div class="textoarticulos">
+						<h1>Bordados Únicos, Estilo Único; Así es Fauves Brand</h1>
+						<p>En el corazón de una pequeña marca de ropa española, nace la filosofía de 'Bordados Únicos, Estilo Único'. Cada prenda es una obra de arte en sí misma, cuidadosamente confeccionada a mano con pasión y dedicación. Nuestros bordados cuentan historias de la rica herencia cultural de España, fusionando tradición y modernidad en un equilibrio perfecto.</p>
+						<div class="padding-enlace"><a href="https://www.instagram.com/fauvesbrand/?hl=es">Ver más</a></div>
+					</div>
+				</div>
+			</div>
+	</section>
+
+
+	<section class="comentarios"> <!--Sección4-->
+		<div class="titulo-seccion">Embajadores</div><!--Agrupa simplemente el div con el título de la sección-->
+		<div class="wrapper"><!--Wraps/Agrupa los 3 bloques de contendido-->
+			<div class="contenedor-perfiles"><!--El propio contenedor de cada perfil-->
+				<div class="perfil"><!--La parte de la imagen y el nombre en la tarjeta de perfil, de esta manera dividimos el bloque en partes-->
+					<div class="imgBox"><!--Caja que contiene la img-->
+						<img src="img/profile1.png">
+					</div>
+					<h2>Júlia</h2>
+				</div>
+				<p><span class="fa fa-quote-left left"></span>Hace unos días platicaba de la simpleza y esencialidad de los sandwich de nata y los del Caprabo son muy buenos, incluso planteé a unos amigos hacer una cata a ciegas, una gran camiseta.</p><!--Párrafo en sí, se ha añadido un "icono" de FontAwesome para la comilla inicial-->
+				<div class="social"><!--Parte de las redes sociales, se han utilizado los iconos que provee FontsAwesome para ello-->
+					<i class="fab fa-twitter"></i>
+					<i class="fab fa-youtube"></i>
+					<i class="fab fa-instagram"></i>
+				</div>
+			</div>
+
+			<!--Se repetirá lo anterior, con pequeñas modificaciones desde Contenedor-perfiles hasta el último div.social, tres veces una por cada perfil que hemos creado-->
+
+			<div class="contenedor-perfiles">
+				<div class="perfil">
+					<div class="imgBox">
+						<img src="img/profile2.png">
+					</div>
+					<h2>Isabel</h2>
+				</div>
+				<p><span class="fa fa-quote-left left"></span>Hace unos días platicaba de la simpleza y esencialidad de los sandwich de nata y los del Caprabo son muy buenos, incluso planteé a unos amigos hacer una cata a ciegas, una gran camiseta.</p>
+				<div class="social">
+					<i class="fab fa-twitter"></i>
+					<i class="fab fa-youtube"></i>
+					<i class="fab fa-instagram"></i>
+				</div>
+			</div>
+
+			<div class="contenedor-perfiles">
+				<div class="perfil">
+					<div class="imgBox">
+						<img src="img/profile3.png">
+					</div>
+					<h2>Noa</h2>
+				</div>
+				<p><span class="fa fa-quote-left left"></span>Hace unos días platicaba de la simpleza y esencialidad de los sandwich de nata y los del Caprabo son muy buenos, incluso planteé a unos amigos hacer una cata a ciegas, una gran camiseta.</p>
+				<div class="social">
+					<i class="fab fa-twitter"></i>
+					<i class="fab fa-youtube"></i>
+					<i class="fab fa-instagram"></i>
+				</div>
+			</div>
+		</div>
+		<p class="end-comentarios">¿Quieres formar parte de nuestro programa de embajadores...?</p><!--Se añade un párrafo como claim-->
+		<div class="arrow"><i class="fa-solid fa-arrow-right fa-rotate-90" style="color: #000000;"></i></div><!--Se añade una flecha de FontsAwesome-->
+		<div class="suscribete"><a>Suscríbete Suscríbete Suscríbete Suscríbete Suscríbete</a></div><!--Link que les llevará a la página de subscrición-->
+	</section> 
+
+	<section class="footer"><!--Sección5, al completo-->
+		<div class="wrap"><!--Contiene solo el propio contenido-->
+			<div class="logo"><!--Logo redimensionado-->
+				<img src="img/logo.png">
+			</div>
+			<div class="datos"><!--Lista con "a" para que podamos hacer hover-->
+				<a>Contacto</a>
+				<a>About us</a>
+				<a>Shipping Policies</a>
+				<a>Centro de ayuda</a>
+				<a>Blog</a>
+			</div>
+			<div class="subscripcion"><!--Form en el que podrán escribir sus nombres, apellidos, y correo electrónico y mandarlo-->
+				<form method="POST" action="">
+					<input type="text" name="Nombre" placeholder="Nombre">
+					<input type="text" name="Apellido" placeholder="Apellido">
+					<input type="text" name="Correo" placeholder="Correo Electrónico">
+					<input type="submit" name="Subscribirse">
+				</form>
+			</div>
+		</div>
+	</section>
+
+
+</body>
+</html>
